@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Επίλυση όδευσης</title>
+    <!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">-->
+</head>
+<body>
+    <ul class="topnav">
+    <li><a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/')">Αρχική</a></li>
+    <li><a class="active">Επίλυση όδευσης</a></li>
+    <li onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/goniometriseis.html')"><a>Έντυπο γωνιομετρήσεων</a></li>
+    <li onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/instructions.html')"><a>Οδηγίες χρήσης της εφαρμογής "Επίλυση όδευσης"</a></li>
+
+    <li style="float:right; display: flex; align-items: center; padding: 4px;">
+    <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
+    <button class="btn2" onclick="solve()">Επίλυση</button>
+    <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></li>
+    <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
+    </ul>
+
+<div id="table-div" style="padding:0 20px; margin-top:70px;">
+    <h2>Επίλυση όδευσης</h2>
+    <b>Προσοχή:</b> 
+    <ul>
+    <li>Η εφαρμογή είναι δοκιμαστική έκδοση και μπορεί να υπάρχουν σφάλματα. (This application is a beta version and may contain errors.)</li>
+    <li>Κατα την εισαγωγή των δεδομένων, χρησιμοποιήστε την τελειά (.) ως διαχωριστή δεκαδικών ψηφίων!</li>
+    </ul>
+    <br>
+    <table id="editableTable">
+        <thead>
+            <tr style="background-color: lightskyblue;">
+                <th style=" padding: 8px;">Σημείο</th>
+                <th style=" padding: 8px;">β [grad]</th>
+                <th style=" padding: 8px;">G [grad]</th>
+                <th style=" padding: 8px;">S [m]</th>
+                <th style=" padding: 8px;">Δx [m]</th>
+                <th style=" padding: 8px;">Δy [m]</th>
+                <th style=" padding: 8px;">X [m]</th>
+                <th style=" padding: 8px;">Y [m]</th>
+                <th style=" padding: 8px;">β Διορθ. [grad]</th>
+                <th style=" padding: 8px;">Διαγραφή γραμμής</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P1"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="270.1350"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="112.43"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="281.73"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="5818.96"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td style="font-size: 15px;">
+                    Δεν μπορεί να διαγραφεί, χρειάζονται τουλάχιστον 5 σημεία!
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P2"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="187.4280"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="137.12"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="1248.42"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="7143.24"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td style="font-size: 15px;">
+                    Δεν μπορεί να διαγραφεί, χρειάζονται τουλάχιστον 5 σημεία!
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P3"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="208.5720"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="124.19"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td style="font-size: 15px;">
+                    Δεν μπορεί να διαγραφεί, χρειάζονται τουλάχιστον 5 σημεία!
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P4"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="189.1140"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="119.79"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td style="font-size: 15px;">
+                    Δεν μπορεί να διαγραφεί, χρειάζονται τουλάχιστον 5 σημεία!
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P5"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="205.8050"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="127.16"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td style="font-size: 15px;">
+                    Δεν μπορεί να διαγραφεί, χρειάζονται τουλάχιστον 5 σημεία!
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P6"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="118.0180"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td>
+                    <button class="btn" onclick="deleteRow(this)">Διαγραφή γραμμής</button>
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P7"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="1866.370"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="7124.230"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td>
+                    <button class="btn" onclick="deleteRow(this)">Διαγραφή γραμμής</button>
+                </td>
+            </tr>
+            <tr>
+                <td contenteditable="false"><input type="text" class="tableInputs" style="font-weight: bold;" value="P8"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="2332.15"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs" value="8626.04"></td>
+                <td contenteditable="false"><input type="Number" class="tableInputs"></td>
+                <td>
+                    <button class="btn" onclick="deleteRow(this)">Διαγραφή γραμμής</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br><input id="sfalmataTxt" value="Τα σφάλματα θα εμφανιστούν εδώ"><br><br>
+    <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
+    <button class="btn2" onclick="solve()">Επίλυση</button>
+    <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br>
+
+    <label>Όνομα αρχείου αποτελεσμάτων:</label><br><br>
+    <input id="resultsFileNameTxt" class="input2" value="odeusiResults"><br><br>
+    <button class="btn2" onclick="saveResults()">Αποθήκευση αποτελεσμάτων</button><br><br>
+
+    <label>Όνομα αρχείου δεδομένων:</label><br><br>
+    <input id="dataFileNameTxt" class="input2" value="odeusiData"><br><br>
+    <button class="btn2" onclick="saveData()">Αποθήκευση δεδομένων</button><br><br>
+
+    <button class="btn2" onclick="openData()">Εισαγωγή δεδομένων</button>
+
+    <input type="file" id="fileInput" style="display: none;" />
+
+    <br><br>Creator: Nikos Ververidis<br>
+    <br>Code availiable under GNU Affero General Public License v3.0 at <a href="https://github.com/nik-v123/odeusiSolve">https://github.com/nik-v123/odeusiSolve</a>
+    <br><br>
+    
+    </div>
+    </body>
+    </html>
+
+    <style>
+        table {
+            font-size: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 0px;
+            text-align: left;
+        }
+        .btn {
+            cursor: pointer;
+            margin: 2px;
+            background-color: rgb(255, 92, 92);
+            border-radius: 25px;
+            padding: 5px;
+            color: white;
+            border: none;
+            transition-duration: 0.4s;
+        }
+        #sfalmataTxt{
+            font-size: 20px;
+            font-family: Arial;
+            width: 700px;
+        }
+        .input2{
+            font-size: 20px;
+            font-family: Arial;
+            size: 20;
+        }
+        .btn2{
+            font-size: 15px;
+            font-family: Arial;
+            cursor: pointer;
+            margin: 2px;
+            background-color: rgb(73, 108, 72);
+            color: white;
+            border-radius: 25px;
+            padding: 5px;
+            border: none;
+            transition-duration: 0.4s;
+        }
+        #clearButton{
+            background-color: rgb(255, 92, 92);
+            border: none;
+            font-size: 15px;
+            font-family: Arial;
+            cursor: pointer;
+            margin: 2px;
+            color: white;
+            border-radius: 25px;
+            padding: 5px;
+            transition-duration: 0.4s;
+        }
+        .btn2:hover {
+            background-color: rgba(73, 108, 72, 0.76);
+        }
+        .btn:hover{
+            background-color: rgba(255, 92, 92, 0.763);
+        }
+        #clearButton:hover{
+            background-color: rgba(255, 92, 92, 0.763);
+        }
+        .btn:active{
+            background-color: rgb(255, 92, 92);
+        }
+        #clearButton:active{
+            background-color: rgb(255, 92, 92);
+        }
+        .btn2:active{
+            background-color: rgb(73, 108, 72);
+        }
+        .tableInputs{
+            width: 80%;
+            height: 100%;
+            font-size: 20px;
+            border: none;
+            padding: 8px;
+            text-align: left;
+            font-family: Generic fonts;
+        }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+        }
+
+        /*Navbar*/
+
+        body {margin: 0;}
+
+        ul.topnav {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        }
+
+        ul.topnav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        }
+
+        ul.topnav li {float: left;}
+
+        ul.topnav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+
+        ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+        ul.topnav li a.active {background-color: rgb(99, 147, 98);}
+
+        ul.topnav li.right {float: right;}
+
+        @media screen and (max-width: 1500px) {
+        ul.topnav li.right, 
+        ul.topnav li {float: none;}
+        #table-div{
+            width: 1500px;
+            overflow-x: scroll;   
+        }
+        ul.topnav li a {padding: 2px 2px;}
+        ul.topnav{width: 100%;}
+        ul.topnav li a{text-align: left;}
+    }
+    </style>
+
+    <script>
+        //global variables
+
+        resultsToSave = "";
+
+        dataToSave = "";
+
+        function goToPage(pageUrl){
+            let confirmation = confirm("Ολα τα δεομένα σε αυτή την σελίδα θα χαθούν. Θέλετε να συνεχίσετε;");
+            if(confirmation == false){
+            }
+            else{
+                location.href = pageUrl;
+            }
+        }
+
+
+        function addRow() {
+            let table = document.getElementById("editableTable").getElementsByTagName('tbody')[0];
+            let newRow = table.insertRow();
+            
+            let cells = [];
+            for (let i=0; i<=9; i++){
+                cells.push(newRow.insertCell(i));
+            }
+
+            for (let i=0; i<=7; i++){
+                cells[i].contentEditable = "false";
+                cells[0].style = "font-weight: bold;";
+                cells[i].innerHTML = '<input type="text" class="tableInputs" style="font-weight: bold;">';
+            }
+            
+            for (let i=1; i<9; i++){
+                cells[i].innerHTML = '<input type="Number" class="tableInputs">';
+            }
+
+            cells[9].innerHTML = '<button class="btn" onclick="deleteRow(this)">Διαγραφή γραμμής</button>';
+        }
+
+        function deleteRow(button) {
+            let row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+        function saveTableData() {
+            let table = document.getElementById("editableTable");
+            let rows = table.getElementsByTagName("tbody")[0].rows;
+            let tableData = [];
+
+            for (let i = 0; i < rows.length; i++) {
+                let cells = rows[i].cells;
+                let rowData = [];
+                for (let j = 0; j < cells.length - 1; j++) { // Exclude last column (buttons)
+                    rowData.push(cells[j].firstChild.value);
+                }
+                tableData.push(rowData);
+            }
+
+            
+            return tableData;
+        }
+
+    function setCell(i,j,setValue){
+        let table = document.getElementById("editableTable");
+        let rows = table.getElementsByTagName("tbody")[0].rows;
+        let cells = rows[i].cells;
+        cells[j].firstChild.value = setValue;
+    }
+    function clear1(){
+        data = saveTableData();
+        rowsCount = data.length;
+        columnsCount = data[0].length;
+        for (i=0; i<rowsCount; i++){
+            for (j=0; j<columnsCount; j++){
+                setCell(i,j,"");
+            }
+        }
+        table = document.getElementById("editableTable");
+        for (let i=0; i<rowsCount-5; i++){
+            table.deleteRow(-1);
+        }
+    }
+    function clear2(){
+        let confirmation = confirm("Είστε σίγουροι οτι θέλετε να διαγραφούν όλα τα δεομένα;");
+        if(confirmation == false){
+        }
+        else{
+            clear1();
+        }
+    }
+    function sin(x) {
+        return Math.sin(x);
+    }
+
+    function cos(x) {
+        return Math.cos(x);
+    }
+
+    function sqrt(x) {
+        return Math.sqrt(x);
+    }
+
+    function grad2rad(g) {
+        return g * Math.PI / 200;
+    }
+
+    function rad2grad(r) {
+        return 200.0 * r / Math.PI;
+    }
+
+    function first(x1, y1, s12, g12) {
+        const x2 = x1 + s12 * sin(grad2rad(g12));
+        const y2 = y1 + s12 * cos(grad2rad(g12));
+        return [x2, y2];
+    }
+
+    function second(x1, y1, x2, y2) {
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const a = rad2grad(Math.atan(Math.abs(dx / dy)));
+        const s12 = sqrt(dx ** 2 + dy ** 2);
+        let g12;
+
+        if (dx > 0) {
+            if (dy > 0) {
+                g12 = a;
+            } else if (dy === 0) {
+                g12 = 100;
+            } else {
+                g12 = 200 - a;
+            }
+        } else if (dx < 0) {
+            if (dy > 0) {
+                g12 = 400 - a;
+            } else if (dy === 0) {
+                g12 = 300;
+            } else {
+                g12 = 200 + a;
+            }
+        } else {
+            if (dy > 0) {
+                g12 = 0;
+            } else if (dy === 0) {
+                g12 = -999;
+            } else {
+                g12 = 200;
+            }
+        }
+
+        return [g12, s12];
+    }
+
+    function conv2z4(g) {
+        while (g >= 400) {
+            g -= 400;
+        }
+        while (g <= 0) {
+            g += 400;
+        }
+        return g;
+    }
+
+    function third(garx, thlasis) {
+        const gNew = [];
+        let thNew = garx;
+        for (const th of thlasis) {
+            thNew = thNew + th + 200.0;
+            gNew.push(conv2z4(thNew));
+        }
+        return gNew;
+    }
+
+    //function to solve transverse
+    function calc(th, s, xGiven, yGiven) {
+        const [gArx, s12] = second(xGiven[0], yGiven[0], xGiven[1], yGiven[1]);
+
+        const gAllInit = third(gArx, th);
+
+        const [gPrepei] = second(xGiven[2], yGiven[2], xGiven[3], yGiven[3]);
+
+        const dg = gPrepei - gAllInit[gAllInit.length - 1];
+        const dgi = dg / th.length;
+
+        // Corrected direction angles
+        const thCor = th.map(t => t + dgi);
+
+        const gAllCor = third(gArx, thCor);
+
+        const dxList = [];
+        const dyList = [];
+
+        for (let i = 0; i < s.length; i++) {
+            const [dxi, dyi] = first(0, 0, s[i], gAllCor[i]);
+            dxList.push(dxi);
+            dyList.push(dyi);
+        }
+
+        const sDxEinai = dxList.reduce((a, b) => a + b, 0);
+        const sDyEinai = dyList.reduce((a, b) => a + b, 0);
+
+        const sDxPrepei = xGiven[xGiven.length - 2] - xGiven[1];
+        const sDyPrepei = yGiven[yGiven.length - 2] - yGiven[1];
+
+        const wx = sDxPrepei - sDxEinai;
+        const wy = sDyPrepei - sDyEinai;
+
+        const sSum = s.reduce((a, b) => a + b, 0);
+        const wxS = wx / sSum;
+        const wyS = wy / sSum;
+
+        const dx = s.map(si => wxS * si);
+        const dy = s.map(si => wyS * si);
+
+        const dxCor = dxList.map((val, i) => val + dx[i]);
+        const dyCor = dyList.map((val, i) => val + dy[i]);
+
+        const xCor = [];
+        const yCor = [];
+        let x = xGiven[1];
+        let y = yGiven[1];
+
+        for (let i = 0; i < dxCor.length; i++) {
+            x += dxCor[i];
+            y += dyCor[i];
+            xCor.push(x);
+            yCor.push(y);
+        }
+
+        gAllCor.unshift(gArx);
+
+        return [gAllCor, xCor, yCor, dxCor, dyCor, thCor, dg, dgi, wx, wy, dx, dy];
+    }
+
+    //function to show the results
+    function setData(gAllCor, xCor, yCor, dxCor, dyCor, thCor, dg, dgi, wx, wy){
+        for (let i=0; i<gAllCor.length; i++){
+            setCell(i,2,gAllCor[i].toFixed(4));
+        }
+        for (let i=0; i<xCor.length; i++){
+            setCell(i+2,6,xCor[i].toFixed(3));
+        }
+        for (let i=0; i<yCor.length; i++){
+            setCell(i+2,7,yCor[i].toFixed(3));
+        }
+        for (let i=0; i<dxCor.length; i++){
+            setCell(i,4,dxCor[i].toFixed(3));
+        }
+        for (let i=0; i<dyCor.length; i++){
+            setCell(i,5,dyCor[i].toFixed(3));
+        }
+        for (let i=0; i<thCor.length; i++){
+            setCell(i,8,thCor[i].toFixed(4));
+        }
+        document.getElementById("sfalmataTxt").value = "dg: "+dg.toFixed(5).toString()+" dgi: "+dgi.toFixed(5).toString()+" wx: "+wx.toFixed(4).toString()+" wy: "+wy.toFixed(4).toString();
+    }
+
+    //solve and show the results
+    function solve(){
+        let data = saveTableData();
+
+        let gAllCor, xCor, yCor, dxCor, dyCor, thCor = [];
+        let dg, dgi, wx, wy = 0;
+
+        let th = [];
+        let s = [];
+        let xg = [];
+        let yg = [];
+
+        let pointNames = [];
+
+        let rowsCount = data.length;
+
+        for (let i=0; i<rowsCount; i++){
+            pointNames.push(data[i][0]);
+        }
+
+
+        for (let i=0; i<rowsCount; i++){
+            let d = data[i][1];
+            if (d == ""){
+                break;
+            }
+            else{
+                th.push(parseFloat(d));
+            }
+            
+        }
+        for (let i=0; i<rowsCount; i++){
+            let d = data[i][3];
+            if (d == ""){
+                break;
+            }
+            else{
+                s.push(parseFloat(d));
+            }
+            
+        }
+
+        let dxg = [];
+        for (let i=0; i<rowsCount; i++){
+            dxg.push(parseFloat(data[i][6]));
+        }
+        xg.push(parseFloat(dxg[0]));
+        xg.push(parseFloat(dxg[1]));
+        xg.push(parseFloat(dxg[dxg.length - 2]));
+        xg.push(parseFloat(dxg[dxg.length - 1]));
+
+        let dyg = [];
+        for (let i=0; i<rowsCount; i++){
+            dyg.push(parseFloat(data[i][7]));
+        }
+        yg.push(parseFloat(dyg[0]));
+        yg.push(parseFloat(dyg[1]));
+        yg.push(parseFloat(dyg[dyg.length - 2]));
+        yg.push(parseFloat(dyg[dyg.length - 1]));
+
+        //---------check-------------------------
+        let countNaNTh=0;
+        let thOutOfRange = 0;
+        //looping through the array
+        for(let i=2;i<th.length-2;i++){
+            if(Number.isNaN(th[i])){
+                countNaNTh=countNaNTh+1;
+            }
+            if((th[i]<0) || (th[i]>=400)){
+                thOutOfRange = 1;
+            }
+        }
+        let countNaNS=0;
+        let sOutOfRange = 0;
+        //looping through the array
+        for(let i=2;i<s.length-2;i++){
+            if(Number.isNaN(s[i])){
+                countNaNS=countNaNS+1;
+            }
+            if(s[i] <= 0){
+                sOutOfRange = 1;
+            }
+        }
+        let countNaNX=0;
+        //looping through the array
+        for(let i=2;i<dxg.length-2;i++){
+            if(Number.isNaN(dxg[i])){
+                countNaNX=countNaNX+1;
+            }
+        }
+        let countNaNY=0;
+        //looping through the array
+        for(let i=2;i<dyg.length-2;i++){
+            if(Number.isNaN(dyg[i])){
+                countNaNY=countNaNY+1;
+            }
+        }
+        
+        if ((s.length+1 != th.length) || (xg.length != 4) || (yg.length != 4) || (countNaNX != s.length-1) || (countNaNY != s.length-1) || (countNaNTh != 0) || (countNaNS != 0) || (thOutOfRange === 1) || (sOutOfRange === 1)){
+            alert("Η όδευση δεν έχει συμπληρωθεί σωστά!");
+        }
+        else {
+            [gAllCor, xCor, yCor, dxCor, dyCor, thCor, dg, dgi, wx, wy, dx, dy] = calc(th,s,xg,yg);
+            setData(gAllCor, xCor, yCor, dxCor, dyCor, thCor, dg, dgi, wx, wy);
+            resultsToSave = ["ονόματα σημείων\n",pointNames.toString(),"\n","διορθ. γωνίες διεύθ.\n",gAllCor.toString(),"\n","διορθ. x\n",xCor.toString(),"\n","διορθ. y\n",yCor.toString(),"\n","διορθ. Δx\n",dxCor.toString(),"\n","διορθ. Δy\n",dyCor.toString(),"\n","διορθ. β\n",thCor.toString(),"\n","δg\n",dg.toString(),"\n","δgi\n",dgi.toString(),"\n","wx\n",wx.toString(),"\n","wy\n",wy.toString(),"\n","dx\n",dx.toString(),"\n","dy\n",dy.toString(),"\n","β αρχικές\n",th.toString(),"\n","s\n",s.toString(),"\n","x αρχικά\n",xg.toString(),"\n","y αρχικά\n",yg.toString()];
+
+            /*let newTableData = saveTableData();
+                console.log("okkkkk");
+                for (let n=0; n<newTableData.length; n++){
+                    console.log("");
+                    console.log(resultsToSave);
+                    resultsToSave = resultsToSave + newTableData[n].toString() + "\n";
+                    console.log(newTableData[n].toString());
+                    console.log(resultsToSave);
+                    console.log("+++++++++++");
+                }
+            */
+        }    
+    }
+    function saveTxt(fname,txtToSave){
+            let blobdtMIME = new Blob([txtToSave], { type: "text/plain" });
+            let url = URL.createObjectURL(blobdtMIME);
+            let anele = document.createElement("a");
+            anele.setAttribute("download", fname);
+            anele.href = url;
+            anele.click();
+            console.log(blobdtMIME);
+        }
+
+        function saveResults(){
+            let resultsfname = document.getElementById("resultsFileNameTxt").value;
+            if (resultsfname == "" || resultsfname == NaN){
+                alert("Λάθος όνομα για το αρχείο αποτελεσμάτων!");
+            }
+            else{
+                saveTxt(resultsfname+".txt",resultsToSave);
+            }
+        }
+
+        function saveData(){
+            let data = saveTableData();
+
+            let th = [];
+            let s = [];
+            let xg = [];
+            let yg = [];
+
+            let rowsCount = data.length;
+
+            for (let i=0; i<rowsCount; i++){
+                let d = data[i][1];
+                if (d == ""){
+                    break;
+                }
+                else{
+                    th.push(parseFloat(d));
+                }
+                
+            }
+
+            for (let i=0; i<rowsCount; i++){
+                let d = data[i][3];
+                if (d == ""){
+                    break;
+                }
+                else{
+                    s.push(parseFloat(d));
+                }
+                
+            }
+            
+
+            let dxg = [];
+            for (let i=0; i<rowsCount; i++){
+                dxg.push(parseFloat(data[i][6]));
+            }
+            xg.push(parseFloat(dxg[0]));
+            xg.push(parseFloat(dxg[1]));
+            xg.push(parseFloat(dxg[dxg.length - 2]));
+            xg.push(parseFloat(dxg[dxg.length - 1]));
+            
+
+            let dyg = [];
+            for (let i=0; i<rowsCount; i++){
+                dyg.push(parseFloat(data[i][7]));
+            }
+            yg.push(parseFloat(dyg[0]));
+            yg.push(parseFloat(dyg[1]));
+            yg.push(parseFloat(dyg[dyg.length - 2]));
+            yg.push(parseFloat(dyg[dyg.length - 1]));
+
+            dataToSave = "β αρχικές\n"+th.toString()+"\ns\n"+s.toString()+"\n"+"x αρχικά\n"+xg.toString()+"\n"+"y αρχικά\n"+yg.toString();
+
+            let datafname = document.getElementById("dataFileNameTxt").value;
+            if (datafname == "" || datafname == NaN){
+                alert("Λάθος όνομα για το αρχείο δεδομένων!");
+            }
+            else{
+                saveTxt(datafname+".txt",dataToSave);
+            }
+        }
+
+        function openData(){
+            let confirmation = confirm("Με το άνοιγμα αρχείου θα διαγραφούν όλα τα υπάχοντα δεδομένα του πίνακα. Θέλετε να συνεχίσετε;");
+            if(confirmation == false){
+            }
+            else{
+                clear1();
+                const input = document.getElementById('fileInput');
+                input.click();
+
+                input.onchange = () => {
+                const file = input.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    let dataStr = content;
+                    let lines = dataStr.split(/\r\n|\r|\n/);
+                    let bTxt = lines[1].split(",");
+                    let sTxt = lines[3].split(",");
+                    let xgTxt = lines[5].split(",");
+                    let ygTxt = lines[7].split(",");
+
+                    let data = saveTableData();
+                    
+                    let rowsCount = data.length;
+                    
+                    
+                    if (sTxt.length+3 > rowsCount){
+                        
+                        let extraRows = sTxt.length+3-rowsCount;
+                        
+                        for (let i=0; i<extraRows; i++){
+                            
+                            addRow()
+                        }
+                    }
+
+                    for (let i=0; i<bTxt.length; i++){
+                        setCell(i,1,bTxt[i]);
+                    }
+                    for (let i=0; i<sTxt.length; i++){
+                        setCell(i,3,sTxt[i]);
+                    }
+                    setCell(0,6,xgTxt[0]);
+                    setCell(1,6,xgTxt[1]);
+
+                    setCell(sTxt.length+1,6,xgTxt[xgTxt.length-2]);
+                    setCell(sTxt.length+2,6,xgTxt[xgTxt.length-1]);
+
+
+                    setCell(0,7,ygTxt[0]);
+                    setCell(1,7,ygTxt[1]);
+
+                    setCell(sTxt.length+1,7,ygTxt[ygTxt.length-2]);
+                    setCell(sTxt.length+2,7,ygTxt[ygTxt.length-1]);
+                };
+                reader.readAsText(file); // Or readAsDataURL / readAsBinaryString
+                };
+            
+            }
+        }
+
+        //functions for keys
+        document.addEventListener('DOMContentLoaded', () => {
+        const table = document.getElementById('editableTable');
+
+        table.addEventListener('keydown', (event) => {
+            const currentCell = event.target;
+
+            // Ensure the target is an editable table cell
+            if (currentCell.tagName === 'TD' && currentCell.contentEditable === 'true') {
+            const currentRow = currentCell.closest('tr');
+            const cellIndex = currentCell.cellIndex;
+            let targetCell = null;
+
+            switch (event.key) {
+                case 'Enter':
+                case 'ArrowDown':
+                event.preventDefault(); // Prevent new line for Enter, prevent page scroll for ArrowDown
+                const nextRowDown = currentRow.nextElementSibling;
+                if (nextRowDown) {
+                    targetCell = nextRowDown.cells[cellIndex];
+                }
+                break;
+
+                case 'ArrowUp':
+                event.preventDefault(); // Prevent page scroll
+                const prevRowUp = currentRow.previousElementSibling;
+                // Ensure the previous row is not part of thead (if present)
+                if (prevRowUp && prevRowUp.tagName === 'TR' && prevRowUp.closest('tbody')) {
+                    targetCell = prevRowUp.cells[cellIndex];
+                }
+                break;
+
+                case 'ArrowLeft':
+                event.preventDefault(); // Prevent page scroll
+                if (cellIndex > 0) {
+                    targetCell = currentRow.cells[cellIndex - 1];
+                }
+                break;
+
+                case 'ArrowRight':
+                event.preventDefault(); // Prevent page scroll
+                if (cellIndex < currentRow.cells.length - 1) {
+                    targetCell = currentRow.cells[cellIndex + 1];
+                }
+                break;
+            }
+
+            // If a target cell was found and it's editable, focus it
+            if (targetCell && targetCell.contentEditable === 'true') {
+                targetCell.focus();
+            }
+            }
+        });
+        });
+    </script>
+</body>
+</html>
