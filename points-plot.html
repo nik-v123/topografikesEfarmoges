@@ -25,7 +25,7 @@
     <ul>
     <li>Η εφαρμογή είναι υπο κατασκευή και μπορεί να υπάρχουν σφάλματα. (This application is under construction and may contain errors.)</li>
     <li>Κατα την εισαγωγή των δεδομένων, χρησιμοποιήστε την τελειά (.) ως διαχωριστή δεκαδικών ψηφίων!</li>
-    <li>Στο αποθετήριο (repository) <a href="https://github.com/nik-v123/topografikesEfarmoges">https://github.com/nik-v123/topografikesEfarmoges</a> υπάρχουν διαθέσιμα προς λήψη αρχεία για δοκιμές, με τυχαίες συντεταγμένες σημείων.</li>
+    <li>Στο αποθετήριο (repository) <a href="https://github.com/nik-v123/topografikesEfarmoges">https://github.com/nik-v123/topografikesEfarmoges</a> υπάρχουν διαθέσιμα προς λήψη τα αρχεία xyData και codes_and_xyData για δοκιμές, με τυχαίες συντεταγμένες σημείων.</li>
     </ul>
     <br>Χαρχικό: &nbsp <input id="xInitialTxt" type="Number" class="input2" value="0.000"><br>
     <br>Υαρχικό: &nbsp <input id="yInitialTxt" type="Number" class="input2" value="0.000"><br>
@@ -208,41 +208,6 @@
         }
     }
 
-        function openData(){
-            let confirmation = true;//confirm("Με το άνοιγμα αρχείου θα διαγραφούν όλα τα υπάχοντα δεδομένα του πίνακα. Θέλετε να συνεχίσετε;");
-            
-            if(confirmation == false){
-            }
-            else{
-                fileData = [];
-                const input = document.getElementById('fileInput');
-                input.click();
-
-                input.onchange = () => {
-                const file = input.files[0];
-                if (!file) return;
-
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const content = e.target.result;
-
-                    let dataStr = content;
-                    
-                    let lines = dataStr.split(/\r?\n|\r|\n/g);
-
-                    for (let a=0; a<lines.length; a++){
-                        
-                        let splited = (lines[a]).split(",");
-
-                        fileData.push(splited);
-                    }
-            };
-            reader.readAsText(file); // Or readAsDataURL / readAsBinaryString
-        };
-    }
-    
-}
-
 //function to convert radial coordinates list to cartesian coordinates list
 function rth2xy(r,th){
     let x = [];
@@ -297,7 +262,7 @@ function plotPoints(codes,xValues,yValues,xInitial,yInitial){
         y:yValues,
         text:codes,
         mode:"markers",
-        name:"newTrace",
+        name:("Trace " + traceCounter.toFixed(1).toString()),
         hovertemplate: 'Κωδικός: %{text} <br> X: %{x} <br> Y: %{y} <extra></extra>',
         };
     //const layout = {title: "Διάγραμμα σημείων"};
@@ -337,7 +302,6 @@ function calculateAndPlot(){
 
         xyOrRth = document.querySelector('input[name="cartesianOrRadial"]:checked')?.value;
 
-    //openData();
     if (xyOrRth == "xy"){
 
         if (codesExist == true){
