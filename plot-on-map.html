@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="pill-nav">
-    <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/')">Αρχική</a>
+    <a id="initial" onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/')">Αρχική</a>
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/odeusi.html')">Επίλυση όδευσης</a>
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/goniometriseis.html')">Εφαρμογή γωνιομετρήσεων</a>
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/instructions.html')">Οδηγίες χρήσης της εφαρμογής "Επίλυση όδευσης"</a>
@@ -122,6 +122,14 @@
       overflow: hidden;
         background-color: white;
     }
+		@media screen and (max-width: 600px) {
+    .pill-nav a{
+      display: none;
+    }
+    #initial {
+      display:inline-block;
+    }
+  }
     </style>
 
     <script>
