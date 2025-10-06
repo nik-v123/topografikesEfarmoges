@@ -161,7 +161,7 @@
             </tr>
         </tbody>
     </table>
-    <div id="btnDiv2" style="display:none;">
+    <div id="btnDiv2" style="visibility:none;">
     <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
     <button class="btn2" onclick="solve()">Επίλυση</button>
     <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
@@ -314,9 +314,11 @@
     }
             #btnDiv1{
                 display:none;
+                visibility: hidden;
             }
             #btnDiv2{
-                display: flex;
+                display: block;
+                visibility: visible;
                 align-items: center;
                 padding: 4px;
             }
