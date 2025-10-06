@@ -161,7 +161,7 @@
             </tr>
         </tbody>
     </table>
-    <div id="btnDiv2" style="display: flex; align-items: center; padding: 4px;">
+    <div id="btnDiv2" style="display:none;">
     <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
     <button class="btn2" onclick="solve()">Επίλυση</button>
     <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
@@ -190,9 +190,7 @@
     </html>
 
     <style>
-        #btnDiv2{
-            display:none;
-        }
+
         table {
             font-size: 20px;
             width: 100%;
@@ -318,7 +316,9 @@
                 display:none;
             }
             #btnDiv2{
-                display:block;
+                display: flex;
+                align-items: center;
+                padding: 4px;
             }
   }
     </style>
