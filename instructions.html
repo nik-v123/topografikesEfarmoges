@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="pill-nav">
-    <a href='https://nik-v123.github.io/topografikesEfarmoges/'>Αρχική</a>
+    <a id="initial" href='https://nik-v123.github.io/topografikesEfarmoges/'>Αρχική</a>
     <a href='https://nik-v123.github.io/topografikesEfarmoges/odeusi.html'>Επίλυση όδευσης</a>
     <a href='https://nik-v123.github.io/topografikesEfarmoges/goniometriseis.html'>Εφαρμογή γωνιομετρήσεων</a>
     <a class="active">Οδηγίες χρήσης της εφαρμογής "Επίλυση όδευσης"</a>
@@ -91,8 +91,17 @@
       overflow: hidden;
         background-color: white;
     }
+    @media screen and (max-width: 600px) {
+    .pill-nav a{
+      display: none;
+    }
+    #initial {
+      display:inline-block;
+    }
+  }
 
 </style>
+
 
 
 
