@@ -16,10 +16,11 @@
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/points-plot.html')">Εφαρμογή ραπορταρίσματος σημείων σε διάγραμμα</a>
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/plot-on-map.html')">Εφαρμογή ραπορταρίσματος σημείων σε χάρτη</a>
     <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
-    <div style="display: flex; align-items: center; padding: 4px;">
+    <div id="btnDiv1" style="display: flex; align-items: center; padding: 4px;">
     <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
-    <button class="btn2" onclick="solveAndSetData()">Επίλυση</button>
+    <button class="btn2" onclick="solve()">Επίλυση</button>
     <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
+    <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
     </div>
 
 <div id="table-div" style="padding:20px; margin-top:70px;">
@@ -143,7 +144,13 @@
             </tr>
         </tbody>
     </table>
-
+    <br>
+    <div id="btnDiv2" style="visibility:none;">
+    <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
+    <button class="btn2" onclick="solve()">Επίλυση</button>
+    <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
+    <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
+    </div>
     <br>
     <H4>* Ο μέσος όρος υπολογίζεται με βάση την σχέση: (1η θέση τηλεσκοπίου + (2η θέση τηλεσκοπίου - 200)) / 2</H4>
 
@@ -293,6 +300,16 @@
     #initial {
       display:inline-block;
     }
+            #btnDiv1{
+                display:none;
+                visibility: hidden;
+            }
+            #btnDiv2{
+                display: block;
+                visibility: visible;
+                align-items: center;
+                padding: 4px;
+            }
   }
     </style>
 
@@ -627,6 +644,7 @@
 </body>
 
 </html>
+
 
 
 
