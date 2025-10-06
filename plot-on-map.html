@@ -10,14 +10,14 @@
     <!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">-->
 </head>
 <body>
-  <ul class="topnav">
-    <li><a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/')">Αρχική</a></li>
-    <li onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/odeusi.html')"><a>Επίλυση όδευσης</a></li>
-    <li onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/goniometriseis.html')"><a>Εφαρμογή γωνιομετρήσεων</a></li>
-    <li onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/instructions.html')"><a>Οδηγίες χρήσης της εφαρμογής "Επίλυση όδευσης"</a></li>
-    <li onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/points-plot.html')"><a>Εφαρμογή ραπορταρίσματος σημείων σε διάγραμμα</a></li>
-    <li><a class="active">Εφαρμογή ραπορταρίσματος σημείων σε χάρτη</a></li>
-    </ul>
+  <div class="pill-nav">
+    <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/')">Αρχική</a>
+    <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/odeusi.html')">Επίλυση όδευσης</a>
+    <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/goniometriseis.html')">Εφαρμογή γωνιομετρήσεων</a>
+    <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/instructions.html')">Οδηγίες χρήσης της εφαρμογής "Επίλυση όδευσης"</a>
+    <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/points-plot.html')">Εφαρμογή ραπορταρίσματος σημείων σε διάγραμμα</a>
+    <a class="active">Εφαρμογή ραπορταρίσματος σημείων σε χάρτη</a>
+    </div>
 
 <div style="padding: 20px; margin-top:70px;">
     <h2>Εφαρμογή ραπορταρίσματος σημείων σε χάρτη</h2>
@@ -97,48 +97,24 @@
 
         /*Navbar*/
 
-        body {margin: 0;}
-
-        ul.topnav {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-        }
-
-        ul.topnav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        }
-
-        ul.topnav li {float: left;}
-
-        ul.topnav li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        }
-
-        ul.topnav li a:hover:not(.active) {background-color: #111;}
-
-        ul.topnav li a.active {background-color: rgb(99, 147, 98);}
-
-        ul.topnav li.right {float: right;}
-
-        @media screen and (max-width: 1500px) {
-        ul.topnav li.right, 
-        ul.topnav li {float: none;}
-        #table-div{
-            width: 1500px;
-            overflow-x: scroll;   
-        }
-        ul.topnav li a {padding: 2px 2px;}
-        ul.topnav{width: 100%;}
-        ul.topnav li a{text-align: left;}
+        .pill-nav a {
+      display: inline-block;
+      color: black;
+      text-align: center;
+      padding: 14px;
+      text-decoration: none;
+      font-size: 17px;
+      border-radius: 5px;
+    }
+    
+    .pill-nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .pill-nav a.active {
+      background-color: dodgerblue;
+      color: white;
     }
     </style>
 
