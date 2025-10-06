@@ -16,7 +16,7 @@
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/points-plot.html')">Εφαρμογή ραπορταρίσματος σημείων σε διάγραμμα</a>
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/plot-on-map.html')">Εφαρμογή ραπορταρίσματος σημείων σε χάρτη</a>
 
-    <div style="display: flex; align-items: center; padding: 4px;">
+    <div id="btnDiv1" style="display: flex; align-items: center; padding: 4px;">
     <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
     <button class="btn2" onclick="solve()">Επίλυση</button>
     <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
@@ -161,8 +161,14 @@
             </tr>
         </tbody>
     </table>
+    <div id="btnDiv2" style="display: flex; align-items: center; padding: 4px;">
+    <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
+    <button class="btn2" onclick="solve()">Επίλυση</button>
+    <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
+    <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
+    </div>
     <br><input id="sfalmataTxt" value="Τα σφάλματα θα εμφανιστούν εδώ"><br><br>
-
+    
     <label>Όνομα αρχείου αποτελεσμάτων:</label><br><br>
     <input id="resultsFileNameTxt" class="input2" value="odeusiResults"><br><br>
     <button class="btn2" onclick="saveResults()">Αποθήκευση αποτελεσμάτων</button><br><br>
@@ -184,6 +190,9 @@
     </html>
 
     <style>
+        #btnDiv2{
+            display:none;
+        }
         table {
             font-size: 20px;
             width: 100%;
@@ -305,6 +314,12 @@
     #initial {
       display:inline-block;
     }
+            #btnDiv1{
+                display:none;
+            }
+            #btnDiv2{
+                display:block;
+            }
   }
     </style>
 
