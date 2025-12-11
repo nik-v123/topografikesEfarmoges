@@ -17,10 +17,19 @@
     <a onclick="goToPage('https://nik-v123.github.io/topografikesEfarmoges/plot-on-map.html')">Εφαρμογή ραπορταρίσματος σημείων σε χάρτη</a>
     <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
     <div id="btnDiv1" style="display: flex; align-items: center; padding: 4px;">
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">File</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a onclick="saveData()">Αποθήκευση δεδομένων</a>
+                <a onclick="saveResults()">Αποθήκευση αποτελεσμάτων</a>
+                <a onclick="openData()">Άνοιγμα δεδομένων</a>
+            </div>
+            </div>
     <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
     <button class="btn2" onclick="solveAndSetData()">Επίλυση</button>
     <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
     <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
+    <hr>
     </div>
 
 <div id="table-div" style="padding:20px; margin-top:70px;">
@@ -145,29 +154,29 @@
         </tbody>
     </table>
     <br>
+    <H4>* Ο μέσος όρος υπολογίζεται με βάση την σχέση: (1η θέση τηλεσκοπίου + (2η θέση τηλεσκοπίου - 200)) / 2</H4>
+    <br>
     <div id="btnDiv2">
     <button class="btn2" onclick="addRow()">Προσθήκη γραμμής</button>
     <button class="btn2" onclick="solveAndSetData()">Επίλυση</button>
-    <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br></div>
+    <button id="clearButton" class="btn2" onclick="clear2()">Καθαρισμός</button><br><br>
     <!--<li class="right"><a href="instructions.html">Οδηγίες χρήσης</a></li>-->
-    </div>
-    <br>
-    <H4>* Ο μέσος όρος υπολογίζεται με βάση την σχέση: (1η θέση τηλεσκοπίου + (2η θέση τηλεσκοπίου - 200)) / 2</H4>
 
-    <br>
 
-    <label>Όνομα αρχείου αποτελεσμάτων:</label><br><br>
-    <input id="resultsFileNameTxt" class="input2" value="goniometrisiResults"><br><br>
     <button class="btn2" onclick="saveResults()">Αποθήκευση αποτελεσμάτων</button><br><br>
 
-    <label>Όνομα αρχείου δεδομένων:</label><br><br>
-    <input id="dataFileNameTxt" class="input2" value="goniometrisiData"><br><br>
+    
     <button class="btn2" onclick="saveData()">Αποθήκευση δεδομένων</button><br><br>
 
     <button class="btn2" onclick="openData()">Εισαγωγή δεδομένων</button>
 
     <input type="file" id="fileInput" style="display: none;" />
-    
+    </div>
+    </div>
+    <label>Όνομα αρχείου αποτελεσμάτων:</label><br><br>
+    <input id="resultsFileNameTxt" class="input2" value="goniometrisiResults"><br><br>
+    <label>Όνομα αρχείου δεδομένων:</label><br><br>
+    <input id="dataFileNameTxt" class="input2" value="goniometrisiData"><br><br>
     <br><br>Creator: Nikos Ververidis<br>
     <br>Code availiable under GNU Affero General Public License v3.0 at <a href="https://github.com/nik-v123/topografikesEfarmoges">https://github.com/nik-v123/topografikesEfarmoges</a>
     <br><br>
@@ -178,6 +187,44 @@
     </html>
 
     <style>
+        .dropbtn {
+            background-color: #3498DB;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            }
+
+            .dropbtn:hover, .dropbtn:focus {
+            background-color: #2980B9;
+            }
+
+            .dropdown {
+            position: relative;
+            display: inline-block;
+            }
+
+            .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            }
+
+            .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            }
+
+            .dropdown a:hover {background-color: #ddd;}
+
+            .show {display: block;}
         #btnDiv2{
             visibility: hidden;
         }
@@ -322,6 +369,24 @@
         resultsToSave = "";
 
         dataToSave = "";
+
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            }
+
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+                }
+            }
+            }
 
         function goToPage(pageUrl){
             let confirmation = confirm("Ολα τα δεομένα σε αυτή την σελίδα θα χαθούν. Θέλετε να συνεχίσετε;");
