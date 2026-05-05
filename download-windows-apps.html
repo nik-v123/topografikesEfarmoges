@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Εφαρμογές Windows</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!--<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">-->
+</head>
+<body>
+  <br><br>
+<H3 style="text-align:center;"><b>Προσοχή: </b>Η εφαρμογές είναι σε δοκιμαστική έκδοση και μπορεί να υπάρχουν σφάλματα. (This applications are a beta version and may contain errors.)</H3>
+<br>
+<div class="button-row">
+    <a href='https://nik-v123.github.io/topografikesEfarmoges/executable_files/CAD_tools_publish.zip' class="custom-btn">Εφαρμογή μετατροπής CSV σε SCR (CAD tools)</a>
+    <a href='https://nik-v123.github.io/topografikesEfarmoges/executable_files/trigonometriki_ipsometria_publish.zip' class="custom-btn">Εφαρμογή Τριγωνομετρικής Υψομετρίας</a>
+    </div>
+    </body>
+</html>
+
+<style>
+  .button-row {
+  display: flex;
+  gap: 25px;            /* Spacing between the buttons */
+  flex-wrap: nowrap;    /* Keeps them in a single row */
+  overflow-x: auto;     /* Adds a scrollbar if the screen is too narrow */
+  padding: 20px;
+  justify-content: center;
+  font-weight: 150;
+}
+
+.custom-btn {
+  /* Dimensions */
+  width: 200px;
+  height: 120px;
+  
+  /* Alignment (The Secret Sauce) */
+  display: flex;
+  justify-content: center; /* Horizontal center */
+  align-items: center;     /* Vertical center */
+  text-align: center;
+  
+  /* Styling */
+  background-color: #0057b5;
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 15px;
+  padding: 15px;
+  font-family: sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for better UX */
+.custom-btn:hover {
+  background-color: #006ee4;
+}
+
+/* Mobile Styles */
+@media (max-width: 1250px) {
+  .button-row {
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center;    /* Centers the stack horizontally on the screen */
+    gap: 5px;              /* Optional: increase gap for easier tapping on mobile */
+      padding: 10px;
+  }
+
+  .custom-btn {
+      font-weight: bold;
+      padding: 5px;
+      font-size: 15px;
+  }
+
+.custom-btn:active {
+  transform: scale(0.95); /* Slight "squish" effect when tapped */
+}
+}
+</style>
